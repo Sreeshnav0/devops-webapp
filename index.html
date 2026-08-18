@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Webapp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🚀 DevOps Webapp</h1>
+        <p>End-to-End CI/CD, ChatOps & Static Deployment</p>
+    </header>
+
+    <main>
+
+        <section class="card">
+            <h2>Status</h2>
+            <p>This page is deployed automatically whenever new code is pushed to GitHub.</p>
+            <span class="status">Build: Passing</span>
+        </section>
+
+        <section class="card">
+            <h2>Pipeline Overview</h2>
+            <ul>
+                <li>Push code to GitHub</li>
+                <li>GitHub Actions runs the CI pipeline</li>
+                <li>Slack/Teams receives a build notification</li>
+                <li>Netlify automatically deploys the site</li>
+            </ul>
+        </section>
+
+        <button onclick="showMessage()">Click Me</button>
+
+        <p id="message"></p>
+
+    </main>
+
+    <footer>
+        <p>© 2026 DevOps Webapp Lab</p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").innerText =
+                "Redeploy triggered successfully!";
+        }
+    </script>
+
+</body>
+</html>
