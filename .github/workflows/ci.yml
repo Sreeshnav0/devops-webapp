@@ -21,3 +21,19 @@ jobs:
 
       - name: Generate Logs
         run: echo "Workflow executed successfully"
+
+      - name: Send Slack Notification
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            MESSAGE="CI/CD Pipeline Successful - Build Passed"
+          else
+            MESSAGE="CI/CD Pipeline Failed - Check GitHub Actions"
+          fi
+
+          curl -X POST \
+            -H "Content-type: application/json" \
+            --data "{\"text\":\"$MESSAGE\"}" \
+            "$SLACK_WEBHOOK_URL"
